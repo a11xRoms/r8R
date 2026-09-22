@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>r8R — Video Platform</title>
+<meta name="description" content="r8R — modern video sharing platform">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" title="Menu">☰</button>
+  <a class="brand" href="#home">r8<span>R</span></a>
+  <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search videos, creators and hashtags"><button>⌕</button></form>
+  <div class="actions">
+    <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+    <button class="upload-btn" id="uploadBtn">＋ Upload</button>
+    <button class="avatar" id="profileBtn">R</button>
+  </div>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <button class="nav active" data-page="home">⌂ <span>Home</span></button>
+  <button class="nav" data-page="trending">🔥 <span>Trending</span></button>
+  <button class="nav" data-page="subscriptions">★ <span>Subscriptions</span></button>
+  <div class="line"></div>
+  <button class="nav" data-page="library">▣ <span>Library</span></button>
+  <button class="nav" data-page="history">◷ <span>History</span></button>
+  <button class="nav" data-page="liked">♡ <span>Liked videos</span></button>
+  <button class="nav" data-page="playlists">☷ <span>Playlists</span></button>
+  <div class="line"></div>
+  <button class="nav" id="settingsBtn">⚙ <span>Settings</span></button>
+</aside>
+
+<main id="main"></main>
+
+<div class="modal" id="uploadModal">
+  <div class="modal-card">
+    <button class="close" data-close="uploadModal">×</button>
+    <h2>Upload to r8R</h2>
+    <p class="muted">Choose a video. On GitHub Pages, uploads are stored locally in this browser.</p>
+    <form id="uploadForm">
+      <label class="drop" id="dropZone">
+        <input id="videoFile" type="file" accept="video/*" required>
+        <span class="upload-icon">↑</span><strong>Choose a video</strong><small id="fileName">MP4, WebM, MOV and other browser-supported formats</small>
+      </label>
+      <label>Title<input id="videoTitle" maxlength="120" required placeholder="Give your video a title"></label>
+      <label>Description<textarea id="videoDescription" maxlength="5000" rows="5" placeholder="Tell viewers about your video"></textarea></label>
+      <label>Hashtags<input id="videoTags" maxlength="300" placeholder="#gaming #music #r8R"></label>
+      <label>Thumbnail <input id="videoThumb" type="file" accept="image/*"></label>
+      <div class="row">
+        <label>Visibility<select id="videoVisibility"><option>Public</option><option>Unlisted</option><option>Private</option></select></label>
+        <label>Category<select id="videoCategory"><option>Gaming</option><option>Music</option><option>Technology</option><option>Entertainment</option><option>Education</option><option>Other</option></select></label>
+      </div>
+      <button class="primary full" type="submit">Publish video</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="videoModal">
+  <div class="watch-card">
+    <button class="close" data-close="videoModal">×</button>
+    <video id="player" controls playsinline></video>
+    <div id="watchInfo"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
